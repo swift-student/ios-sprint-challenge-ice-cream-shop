@@ -20,24 +20,15 @@ You have three hours to complete this challenge. Plan your time accordingly.
 
 Commit your code regularly and meaningfully. This helps both you (in case you ever need to return to old code for any number of reasons) and your Team Lead.
 
-## Description
-
-In your solution project, it is essential that you follow best practices and produce clean and professional results. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your code. It is better to submit a challenge that meets the minimum requirements than one that attempts too much and does not work in the end.
-
-At a high level, the requirements are as follows:
-
-- A struct called `Flavor` that has name and rating properties. Think about what types these should each be.
-- An enum called `Size` that has a case for small, medium, and large
-- A struct called `IceCreamCone` that has a `Flavor`, topping `String`, and `Size` property.
-- 
-
 ## Project Set Up
 
 Please fork this repository and clone the fork to your machine to begin work. This repository contains a playground that you should write your code in. 
 
 ## Minimum Viable Product
 
-Follow these steps to construct your application based on the scaffolding provided in the starter. Recognize that not every step necessary to complete this challenge will be listed below. It can be useful to mentally break a step down by its individual sentences, or even smaller than that.
+In your solution, it is essential that you follow best practices and produce clean and professional results. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your code. It is better to submit a challenge that meets the minimum requirements than one that attempts too much and does not work in the end.
+
+Follow these steps to complete the Sprint Challenge. Recognize that not every step necessary to complete this challenge will be listed below. It can be useful to mentally break a step down by its individual sentences, or even smaller than that.
 
 1. Create a struct called `Flavor`. Add the following properties. Think about what type they should be:
     - `name`
