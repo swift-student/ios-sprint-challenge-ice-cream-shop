@@ -66,6 +66,7 @@ Follow these steps to complete the Sprint Challenge. Recognize that not every st
 9. Call the shop's `listTopFlavors` function and make sure it runs correctly.
 10. Create a new `Cone` constant. Use the shop's `orderCone` function to assign the constant a `Cone` value.
 11. Using that new `Cone` constant, call its `eat` function without unwrapping the constant.
+12. Print the shop's `totalSales` and make sure that it has increased since you ordered a cone in step 10.
 
 Validate your work through running your playground and ensure that your code operates as designed.
 
