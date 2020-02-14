@@ -37,9 +37,16 @@ class IceCreamShop {
     }
     
     func listTopFlavors() {
-        // I could also do this with a for loop, but since I am more than comfortable with loops, I will use filter and map, which I haven't used as much
         let topFlavorNames = flavors.filter({$0.rating > 4.0}).map({ $0.name.lowercased() })
         
+        // I could also do this with a for loop, but since I am more than comfortable with loops, I used filter and map, which I haven't used as much
+        //        var topFlavorNames = [String]()
+        //        for flavor in flavors {
+        //            if flavor.rating > 4.0 {
+        //                topFlavorNames.append(flavor.name.lowercased())
+        //            }
+        //        }
+
         switch topFlavorNames.count {
         case 0:
             print("Sorry, we actually don't have any top flavors right now.")
@@ -94,6 +101,7 @@ let heraldsDairyDelight = IceCreamShop(flavors: [vanilla, chocolate, cookiesnCre
                                        sizes: sizes,
                                        toppings: toppings)
 
+// Changing the flavors ratings here to test print statements
 heraldsDairyDelight.listTopFlavors()
 heraldsDairyDelight.flavors[0] = Flavor(name: "Vanilla", rating: 4.9)
 heraldsDairyDelight.listTopFlavors()
@@ -107,6 +115,7 @@ myCone = heraldsDairyDelight.orderCone(flavor: vanilla, topping: "hot fudge", si
 myCone?.eat()
 print(heraldsDairyDelight.totalSales)
 
+// Attempting to order a flavor that's not on the menu
 let gabbysCone = heraldsDairyDelight.orderCone(flavor: garlic, topping: "hot fudge", size: .small)
 
 
