@@ -2,7 +2,28 @@
 
 struct Flavor {
     let name: String
-    var rating: Double
+    
+    private var _rating = 0.0
+    
+    var rating: Double {
+        get { _rating }
+        set {
+            if newValue < 0.0 {
+                print("You can't give something a negative rating, silly.")
+                _rating = 0.0
+            } else if newValue > 5.0 {
+                print("Our rating scale only goes up to 5.0")
+                _rating = 5.0
+            } else {
+                _rating = newValue
+            }
+        }
+    }
+    
+    init(name: String, rating: Double) {
+        self.name = name
+        self.rating = rating
+    }
 }
 
 enum Size: Double, CaseIterable {
@@ -117,6 +138,13 @@ print(heraldsDairyDelight.totalSales)
 
 // Attempting to order a flavor that's not on the menu
 let gabbysCone = heraldsDairyDelight.orderCone(flavor: garlic, topping: "hot fudge", size: .small)
+
+// Try to make flavors with invalid ratings
+let onion = Flavor(name: "Onion", rating: -4.5)
+print("Onion has a rating of \(onion.rating)")
+
+let gold = Flavor(name: "Gold", rating: 11.0)
+print("Gold has a rating of \(gold.rating)")
 
 
 
