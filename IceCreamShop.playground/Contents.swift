@@ -38,9 +38,21 @@ class IceCreamShop {
     
     func listTopFlavors() {
         // I could also do this with a for loop, but since I am more than comfortable with loops, I will use filter and map, which I haven't used as much
-        let topFlavorNames = flavors.filter({$0.rating > 4.0}).map({ $0.name })
-        let topFlavorList = topFlavorNames.dropLast(1).joined(separator: ", ") + ", and " + (topFlavorNames.last ?? "")
-        print("Our top rated flavors at the moment are \(topFlavorList).")
+        let topFlavorNames = flavors.filter({$0.rating > 4.0}).map({ $0.name.lowercased() })
+        
+        switch topFlavorNames.count {
+        case 0:
+            print("Sorry, we actually don't have any top flavors right now.")
+        case 1:
+            print("Our top rated flavor at the moment is \(topFlavorNames[0])")
+        default:
+            let topFlavorList = topFlavorNames.dropLast(1).joined(separator: ", ") +
+                (topFlavorNames.count > 2 ? "," : "") +
+                " and " +
+                (topFlavorNames.last ?? "")
+            print("Our top rated flavors at the moment are \(topFlavorList).")
+        }
+        
     }
     
     func orderCone(flavor: Flavor, topping: String?, size: Size) -> Cone? {
@@ -62,9 +74,9 @@ class IceCreamShop {
 
 //MARK: - Test Implementation
 
-let vanilla = Flavor(name: "Vanilla", rating: 4.7)
-let chocolate = Flavor(name: "Chocolate", rating: 4.1)
-let cookiesCream = Flavor(name: "Cookies N'Cream", rating: 4.5)
+let vanilla = Flavor(name: "Vanilla", rating: 3.2)
+let chocolate = Flavor(name: "Chocolate", rating: 3.9)
+let cookiesCream = Flavor(name: "Cookies N'Cream", rating: 3.8)
 let bacon = Flavor(name: "Bacon", rating: 2.1)
 let cottonCandy = Flavor(name: "Cotton Candy", rating: 1.3)
 
