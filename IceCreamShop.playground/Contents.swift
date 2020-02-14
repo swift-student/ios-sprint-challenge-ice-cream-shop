@@ -38,10 +38,22 @@ class IceCreamShop {
         // I could also do this with a for loop, but since I am more than comfortable with loops, I will use filter and map, which I haven't used as much
         let topFlavorNames = flavors.filter({$0.rating > 4.0}).map({ $0.name }).joined(separator: ", ")
         
-        print("Our top rated flavors at the moment are \(topFlavorNames)")
+        print("Our top rated flavors at the moment are \(topFlavorNames).")
     }
     
-    
+    func orderCone(flavor: Flavor, topping: String?, size: Size) -> Cone? {
+        let cone = Cone(flavor: flavor, topping: topping ?? "None", size: size)
+        totalSales += cone.size.rawValue
+        
+        
+        var priceString = "Your \(size) \(flavor) ice cream cone "
+        if let topping = topping {
+            priceString += "with \(topping) "
+        }
+        priceString += "is going to be \(cone.size.rawValue)"
+        
+        return cone
+    }
 }
 
 
