@@ -1,24 +1,31 @@
 //MARK: - Model
-
-struct Flavor {
-    let name: String
+@propertyWrapper
+struct ClampedRating {
+    private var value: Double
     
-    private var _rating = 0.0
+    init(wrappedValue: Double) {
+        self.value = wrappedValue
+    }
     
-    var rating: Double {
-        get { _rating }
+    var wrappedValue: Double {
+        get { value }
         set {
             if newValue < 0.0 {
                 print("You can't give something a negative rating, silly.")
-                _rating = 0.0
+                self.value = 0.0
             } else if newValue > 5.0 {
                 print("Our rating scale only goes up to 5.0")
-                _rating = 5.0
+                self.value = 5.0
             } else {
-                _rating = newValue
+                self.value = newValue
             }
         }
     }
+}
+
+struct Flavor {
+    let name: String
+    @ClampedRating var rating = 0.0
     
     init(name: String, rating: Double) {
         self.name = name
@@ -124,24 +131,33 @@ let heraldsDairyDelight = IceCreamShop(flavors: [vanilla, chocolate, cookiesnCre
 
 // Changing the flavors ratings here to test print statements
 heraldsDairyDelight.listTopFlavors()
+print("\n")
 heraldsDairyDelight.flavors[0] = Flavor(name: "Vanilla", rating: 4.9)
 heraldsDairyDelight.listTopFlavors()
+print("\n")
 heraldsDairyDelight.flavors[1] = Flavor(name: "Chocolate", rating: 4.5)
 heraldsDairyDelight.listTopFlavors()
+print("\n")
 heraldsDairyDelight.flavors[2] = Flavor(name: "Cookies N'Cream", rating: 4.1)
 heraldsDairyDelight.listTopFlavors()
+print("\n")
 
 let myCone: Cone?
 myCone = heraldsDairyDelight.orderCone(flavor: vanilla, topping: "hot fudge", size: .small)
+print("\n")
 myCone?.eat()
+print("\n")
 print(heraldsDairyDelight.totalSales)
+print("\n")
 
 // Attempting to order a flavor that's not on the menu
 let gabbysCone = heraldsDairyDelight.orderCone(flavor: garlic, topping: "hot fudge", size: .small)
+print("\n")
 
 // Try to make flavors with invalid ratings
 let onion = Flavor(name: "Onion", rating: -4.5)
 print("Onion has a rating of \(onion.rating)")
+print("\n")
 
 let gold = Flavor(name: "Gold", rating: 11.0)
 print("Gold has a rating of \(gold.rating)")
